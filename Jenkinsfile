@@ -37,6 +37,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 withAWS(credentials: 'aws-credentials-id', region: 'ap-southeast-1') {
+                    sh 'kubectl delete deployment frontend'
                     sh 'kubectl apply -f deployment.yaml'
                 }
             }
