@@ -1,9 +1,8 @@
 <template>
-  <!-- <div id="map" style="width: 100%; height: 100vh"></div> -->
-  <h1>Hello</h1>
+  <div id="map" style="width: 100%; height: 100vh"></div>
 </template>
 
-<!-- <script>
+<script>
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
@@ -59,9 +58,9 @@ export default {
     }
   },
 };
-</script> -->
+</script>
 
-<!-- <style>
+<style>
 body {
   margin: 0;
   padding: 0;
@@ -72,4 +71,4 @@ body {
   bottom: 0;
   width: 100%;
 }
-</style> -->
+</style>
