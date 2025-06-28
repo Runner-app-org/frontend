@@ -28,7 +28,7 @@ export default {
 
     // Connect to WebSocket
     this.ws = new WebSocket(
-      "ws://a2913609a25fb46149a5fd94adf954f0-1346656723.ap-southeast-1.elb.amazonaws.com/ws"
+      "ws://a97e70821a1214abd89b16f168a31950-166820269.ap-southeast-1.elb.amazonaws.com/ws"
     ); // Adjust for Kubernetes service port
     this.ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
