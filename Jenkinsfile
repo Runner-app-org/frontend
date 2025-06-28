@@ -36,8 +36,9 @@ pipeline {
         }
         stage('Deploy to Kubernetes') {
             steps {
-                // Applies the Kubernetes deployment configuration
-                sh 'kubectl apply -f deployment.yaml'
+                withAWS(credentials: 'aws-credentials-id', region: 'ap-southeast-1') {
+                    sh 'kubectl apply -f deployment.yaml'
+                }
             }
         }
     }
