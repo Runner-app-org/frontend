@@ -17,7 +17,8 @@ export default {
   },
   mounted() {
     // Initialize Mapbox
-    mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_ACCESS_TOKEN; // Replace with your Mapbox token
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoibWFwYm94LW1hcms1MTQiLCJhIjoiY21iZzJwc2NiMjdkZDJrcXVoZGFubWk5OSJ9.61kbg5Fbhh-00bKynkMCzg"; // Replace with your Mapbox token
     this.map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
@@ -26,7 +27,9 @@ export default {
     });
 
     // Connect to WebSocket
-    this.ws = new WebSocket(process.env.VUE_APP_WS_URL); // Adjust for Kubernetes service port
+    this.ws = new WebSocket(
+      "ws://a2913609a25fb46149a5fd94adf954f0-1346656723.ap-southeast-1.elb.amazonaws.com/ws"
+    ); // Adjust for Kubernetes service port
     this.ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
 
