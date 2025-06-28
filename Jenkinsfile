@@ -34,12 +34,12 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to Kubernetes') {
-            steps {
-                // Applies the Kubernetes deployment configuration
-                sh 'kubectl apply -f deployment.yaml'
-            }
-        }
+        // stage('Deploy to Kubernetes') {
+        //     steps {
+        //         // Applies the Kubernetes deployment configuration
+        //         sh 'kubectl apply -f deployment.yaml'
+        //     }
+        // }
     }
     post {
         always {
