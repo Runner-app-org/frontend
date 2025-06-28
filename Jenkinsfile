@@ -25,15 +25,20 @@ pipeline {
                 sh 'docker tag ${DOCKER_IMAGE}:${IMAGE_TAG} ${ECR_URL}:${IMAGE_TAG}'
             }
         }
-        // stage('Push to ECR') {
-        //     steps {
-        //         // Logs in to AWS ECR and pushes the image
-        //         withAWS(credentials: 'aws-credentials-id', region: 'ap-southeast-1') {
-        //             sh 'aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin ${ECR_URL}'
-        //             sh 'docker push ${ECR_URL}:${IMAGE_TAG}'
-        //         }
-        //     }
-        // }
+        stage('Push to ECR') {
+            steps {
+                withAWS(credentials: 'aws-credentials-id', region: 'ap-southeast-1') {
+                    sh '''
+                        set -e
+                        echo "Logging in to ECR..."
+                        aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin ${ECR_URL}
+                        echo "Pushing image to ECR..."
+                        docker push ${ECR_URL}:${IMAGE_TAG}
+                    '''
+                }
+            }
+        }
+
         // stage('Deploy to Kubernetes') {
         //     steps {
         //         // Applies the Kubernetes deployment configuration
